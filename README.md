@@ -39,6 +39,8 @@ For example if you want to test if the remote machine is redhat verion 7 you wil
 ```
 With this package you can write an RPC Server and RPC Client to accomplish the same
 
+RPC Server
+
 ```
 type OSChecker int
 
@@ -51,4 +53,17 @@ func (o *OSChecker) CheckVersion(arg *Args, ret *String) error {
   ret = si.GetVersion()
   return nil
   }
+  
+
+```
+
+RPC Client
+
+```
+// Synchronous call
+	args := &Args{}
+	var reply string
+	
+	err := client.Call("OSChecker.CheckVersion", args, &reply)
+	
 ```
